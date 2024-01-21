@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.page-wrapper {
-    width: 100vw;
+html,
+body {
+  margin: 0;
+  height: 100%;
 }
+
+#__next {
+  height: 100%;
+}
+
 
 .page-content-wrapper {
     padding: 50px 50px 0px 50px;
@@ -48,4 +55,8 @@
         cursor: pointer;
         color: #063437;
     }
+}
+
+.active {
+    background-color: RGB(10, 86, 92, 0.05);
 }
