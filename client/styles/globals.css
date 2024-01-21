@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.page-wrapper {
+    width: 100vw;
+}
+
+.page-content-wrapper {
+    padding: 50px 50px 0px 50px;
+}
+
+.sidebar-header {
+    padding: 20px 0px 15px 20px;
+    font-weight: 800;
+    color: #063437;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #063437;
+}
+
+.sidebar-subtitle {
+    padding: 15px 0px 8px 0px;
+    font-weight: 500;
+}
+
+.header-wrapper {
+    border-bottom: 1px solid #063437;
+    height: 67px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-search-wrapper {
+    width: 20px;
+    height: 20px;
+    color: #0A565C;
+
+    & :hover {
+        cursor: pointer;
+        color: #063437;
+    }
+}

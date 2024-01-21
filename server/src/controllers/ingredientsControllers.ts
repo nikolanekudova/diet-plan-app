@@ -16,6 +16,7 @@ export async function getAllIngredients(req: Request, res: Response) {
 
 export async function addNewIngredient(req: Request, res: Response) {
     const newIngredient = req.body;
+    console.log(newIngredient);
 
     try {
         const collection = await Database.getIngredientsCollection();
