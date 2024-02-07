@@ -14,6 +14,14 @@ export interface IActivepage {
     setActivepage: Dispatch<SetStateAction<any>>;
 }
 
+export interface IIngredients {
+    ingredients: Array<Ingredient>,
+    setIngredients: Dispatch<SetStateAction<any>>,
+    newIngredient: Ingredient,
+    setNewIngredient: Dispatch<SetStateAction<any>>,
+    getIngredients: Function;
+}
+
 export interface SidebarItemProps {
     name: string,
     icon: any

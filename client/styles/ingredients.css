@@ -1,0 +1,25 @@
+.ingredient-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ingredient-inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.btn-add-ingredient {
+    width: 50px;
+}
+
+.ingredients-table {
+    width: 70vw;
+}
+
+.btns-ingredient-form {
+    display: flex;
+    gap: 10px;
+}

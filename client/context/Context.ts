@@ -1,7 +1,21 @@
 import { createContext } from "react";
-import { IActivepage } from "../types/types"
+import { IActivepage, IIngredients } from "../types/types";
 
 export const ActivepageContext = createContext<IActivepage>({
     activePage: "Ingredients",
-    setActivepage: () => {}
+    setActivepage: () => {},
+});
+
+export const IngredientsContext = createContext<IIngredients>({
+    ingredients: [],
+    setIngredients: () => {},
+    newIngredient: {
+        name: "",
+        calories: null,
+        fats: null,
+        carbohydrates: null,
+        proteins: null,
+    },
+    setNewIngredient: () => {},
+    getIngredients: Function,
 });
