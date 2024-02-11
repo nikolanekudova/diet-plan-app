@@ -24,7 +24,7 @@ export default function Sidebar() {
                 }}
             >
                 <div className="sidebar-header">DIET PLAN APP</div>
-                <List sx={{ color: "primary.main", paddingLeft: "20px" }}>
+                <List sx={{ color: "primary", paddingLeft: "20px" }}>
                     <div className="sidebar-subtitle">MENU</div>
 
                     <SidebarItem name={"Diet Plans"} icon={<TableChartRounded />} />

@@ -26,3 +26,8 @@ export interface SidebarItemProps {
     name: string,
     icon: any
 }
+
+export interface IHeaderProps {
+    colorMode: string,
+    toggleColorMode: React.Dispatch<React.SetStateAction<any>>
+}

@@ -4,7 +4,7 @@ import { IngredientForm } from "./IngredientForm";
 import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 export function Ingredients() {
-    const [showForm, setShowForm] = useState<boolean>(false);
+    const [showForm, setShowForm] = useState(false);
 
     return (
         <div>

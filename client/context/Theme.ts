@@ -9,16 +9,18 @@ export const getTheme = (mode: PaletteMode) => ({
                       main: "#07393C",
                       light: "#91ECF3",
                       dark: "#063437",
-                      contrastText: "#f5f5f5",
                   },
                   secondary: {
-                      main: "#F3D768",
-                      light: "#F9EBB4",
-                      dark: "#EEC82F",
-                      contrastText: "#063437",
+                      main: "#C53055",
+                      light: "#F2F4F3",
+                      dark: "#832039",
+                      forActiveMenu: "#e3e3e3",
                   },
                   background: {
-                      default: "#F0EDEE",
+                      default: "#FFFFFF",
+                  },
+                  text: {
+                      primary: "#063437",
                   },
               }
             : {
@@ -26,16 +28,18 @@ export const getTheme = (mode: PaletteMode) => ({
                       main: "#07393C",
                       light: "#91ECF3",
                       dark: "#063437",
-                      contrastText: "#f5f5f5",
                   },
                   secondary: {
                       main: "#0A090C",
-                      light: "#0A090C",
+                      light: "#131314",
                       dark: "#0A090C",
-                      contrastText: "#f5f5f5",
+                      forActiveMenu: "#414142",
                   },
                   background: {
                       default: "#0A090C",
+                  },
+                  text: {
+                      primary: "#f5f5f5",
                   },
               }),
     },

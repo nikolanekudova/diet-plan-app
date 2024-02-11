@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { Dispatch, SetStateAction, useContext } from "react";
 import { FormControl, Input, InputLabel, Button } from "@mui/material";
 import { IngredientsContext } from "@/context/Context";
 
-export function IngredientForm({ setForm }) {
+export function IngredientForm({ setForm }: any) {
     const { newIngredient, setNewIngredient, getIngredients } =
         useContext(IngredientsContext);
 

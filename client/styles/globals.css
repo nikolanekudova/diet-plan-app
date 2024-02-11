@@ -2,12 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 body {
     margin: 0;
     font-family: Roboto, Helvetica, sans-serif;
-    background-color: var(--mui-palette-mode-primary-main);
+    height: 100vh;
 }
 
 #__next {
@@ -23,12 +21,13 @@ body {
     padding: 20px 50px 0px 50px;
 }
 
+/* SIDEBAR */
 .sidebar-header {
-    padding: 25px 0px 18px 20px;
+    padding: 25px 0px 10px 20px;
     font-weight: 800;
-    color: #063437;
     font-size: 1.3rem;
-    border-bottom: 1px solid #063437;
+    border-bottom: 1px solid;
+    
 }
 
 .sidebar-subtitle {
@@ -36,14 +35,22 @@ body {
     font-weight: 500;
 }
 
+/* HEADER */
 .header-wrapper {
-    border-bottom: 1px solid #063437;
+    border-bottom: 1px solid;
     height: 67px;
     display: flex;
     align-items: center;
     padding-left: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
+    gap: 10px;
+}
+
+.page-header {
+    padding: 23px 0px 15px 50px;
+    font-weight: 600;
+    font-size: 1.3rem;
 }
 
 .search-wrapper {
@@ -57,25 +64,12 @@ body {
 .icon-search-wrapper {
     width: 20px;
     height: 20px;
-    color: #0A565C;
 
     & :hover {
         cursor: pointer;
-        color: #063437;
     }
 }
 
 .toggle-dark-wrapper {
     padding-right: 60px;
-}
-
-.active {
-    background-color: RGB(10, 86, 92, 0.05);
-}
-
-.page-header {
-    padding: 23px 0px 15px 50px;
-    font-weight: 600;
-    color: #063437;
-    font-size: 1.3rem;
 }

@@ -7,14 +7,10 @@ import { ActivepageContext, IngredientsContext } from "../context/Context";
 import { getTheme } from "../context/Theme";
 import { Ingredient } from "../types/types";
 import { Ingredients } from "@/components/Ingredients/Ingredients";
+import CssBaseline from '@mui/material/CssBaseline';
+import { PaletteMode } from "@mui/material";
 
 function index() {
-    const [mode, setMode] = useState("dark");
-    function toggleColorMode() {
-        setMode(prev => prev === "light" ? "dark" : "light")
-    }
-    let customTheme = React.useMemo(() => createTheme(getTheme(mode)), [mode]);
-    
     const [activePage, setActivepage] = useState("Ingredients");
     const [ingredients, setIngredients] = useState<Ingredient[]>([]);
     const [newIngredient, setNewIngredient] = useState<Ingredient>({
@@ -24,12 +20,17 @@ function index() {
         carbohydrates: null,
         proteins: null,
     });
+    const [mode, setMode] = useState("light");
+    const customTheme = React.useMemo(() => createTheme(getTheme(mode as PaletteMode)), [mode]);
+
+    function toggleColorMode() {
+        setMode(prev => prev === "light" ? "dark" : "light")
+    }
 
     function getIngredients() {
         fetch("http://localhost:8080/ingredients/")
             .then((res) => res.json())
             .then((data) => {
-                //console.log(data);
                 setIngredients(data);
             });
     }
@@ -41,11 +42,12 @@ function index() {
     return (
         <div style={{ display: "flex", height: "100%" }}>
             <ThemeProvider theme={customTheme}>
+                <CssBaseline />
                 <ActivepageContext.Provider value={{ activePage, setActivepage }}>
                     <IngredientsContext.Provider value={{ ingredients, setIngredients, newIngredient, setNewIngredient, getIngredients }}>
                         <Sidebar />
                         <div className="page-wrapper">
-                            <Header />
+                            <Header colorMode={mode} toggleColorMode={toggleColorMode}/>
                             <div className="page-header">{activePage}</div>
                             <div className="page-content-wrapper">
                                 {activePage == "Ingredients" &&
