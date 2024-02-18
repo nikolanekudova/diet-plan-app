@@ -28,6 +28,7 @@ export function Ingredients() {
                     },
                 }}
                 fullWidth={true}
+                sx={{textAlign: "center"}}
             >
                 <DialogTitle>Add New Ingredient</DialogTitle>
                 <DialogContent>

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import { FormControl, Input, InputLabel, Button } from "@mui/material";
 import { IngredientsContext } from "@/context/Context";
 
@@ -31,20 +31,20 @@ export function IngredientForm({ setForm }: any) {
     return (
         <div className="ingredient-form-wrapper">
             <div className="ingredient-inputs-wrapper">
-                <FormControl>
-                    <InputLabel htmlFor="ingredient">Ingredient</InputLabel>
-                    <Input
-                        id="ingredient"
-                        onChange={(e) =>
-                            setNewIngredient({
-                                ...newIngredient,
-                                name: e.target.value,
-                            })
-                        }
-                        sx={{ width: "250px" }}
-                    />
-                </FormControl>
-                <div style={{display: "flex"}}>
+                <div className="ingredient-row-wrapper">
+                    <FormControl>
+                        <InputLabel htmlFor="ingredient">name</InputLabel>
+                        <Input
+                            id="ingredient"
+                            onChange={(e) =>
+                                setNewIngredient({
+                                    ...newIngredient,
+                                    name: e.target.value,
+                                })
+                            }
+                            sx={{ width: "320px" }}
+                        />
+                    </FormControl>
                     <FormControl>
                         <InputLabel htmlFor="calories">calories</InputLabel>
                         <Input
@@ -59,6 +59,8 @@ export function IngredientForm({ setForm }: any) {
                             sx={{ width: "150px" }}
                         />
                     </FormControl>
+                </div>
+                <div className="ingredient-row-wrapper">
                     <FormControl>
                         <InputLabel htmlFor="fats">fats</InputLabel>
                         <Input

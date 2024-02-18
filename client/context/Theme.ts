@@ -25,9 +25,9 @@ export const getTheme = (mode: PaletteMode) => ({
               }
             : {
                   primary: {
-                      main: "#07393C",
-                      light: "#91ECF3",
-                      dark: "#063437",
+                      main: "#588787",
+                      light: "#c1e1e3",
+                      dark: "#466e6e",
                   },
                   secondary: {
                       main: "#0A090C",

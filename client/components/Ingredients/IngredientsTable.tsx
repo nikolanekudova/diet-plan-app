@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import {
     DataGrid,
+    GridActionsCellItem,
     GridColDef,
 } from "@mui/x-data-grid";
 import { IngredientsContext } from "@/context/Context";
 import { Ingredient } from "../../types/types";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const columns: GridColDef[] = [
     { field: "name", headerName: "Ingredient", width: 300, editable: true },
@@ -17,6 +22,52 @@ const columns: GridColDef[] = [
     },
     { field: "proteins", headerName: "Proteins", width: 100, editable: true },
     { field: "fats", headerName: "Fats", width: 100, editable: true },
+    { field: "actions", headerName: "Actions", width: 100, getActions: ({ id }) => {
+        //const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
+        const isInEditMode = true;
+
+        if (isInEditMode) {
+          return [
+            <GridActionsCellItem
+              icon={<SaveIcon />}
+              label="Save"
+              sx={{
+                color: 'primary.main',
+              }}
+              key={id}
+              onClick={() => console.log("click")}
+              //onClick={handleSaveClick(id)}
+            />,
+
+            <GridActionsCellItem
+              icon={<DeleteOutlineIcon />}
+              label="Cancel"
+              className="textPrimary"
+              onClick={() => console.log("click")} //handleCancelClick(id
+              color="inherit"
+              key={id}
+            />,
+          ];
+        }
+
+        return [
+            // eslint-disable-next-line react/jsx-key
+          <GridActionsCellItem
+            icon={<EditIcon />}
+            label="Edit"
+            className="textPrimary"
+            //onClick={handleEditClick(id)}
+            color="inherit"
+          />,
+          // eslint-disable-next-line react/jsx-key
+          <GridActionsCellItem
+            icon={<DeleteIcon />}
+            label="Delete"
+            //onClick={handleDeleteClick(id)}
+            color="inherit"
+          />,
+        ];
+    }},
 ];
 
 export function IngredientsTable() {
