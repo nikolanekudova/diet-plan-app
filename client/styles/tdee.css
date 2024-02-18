@@ -1,0 +1,16 @@
+.tdee-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tdee-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tdee-form-row-wrapper {
+    display: flex;
+    gap: 20px;
+}

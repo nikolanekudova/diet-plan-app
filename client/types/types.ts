@@ -31,3 +31,12 @@ export interface IHeaderProps {
     colorMode: string,
     toggleColorMode: React.Dispatch<React.SetStateAction<any>>
 }
+
+export interface ITdee {
+    height: number | null;
+    weight: number | null;
+    age: number | null;
+    gender: "male" | "female" | string,
+    bodyFat: number | null,
+    lifestyle: "sedentary" | "lightlyActive" | "moderatelyActive" | "veryActive" | string,
+}

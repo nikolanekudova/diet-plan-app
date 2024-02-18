@@ -9,7 +9,7 @@ import { Ingredient } from "../types/types";
 import { Ingredients } from "@/components/Ingredients/Ingredients";
 import CssBaseline from '@mui/material/CssBaseline';
 import { Divider, PaletteMode } from "@mui/material";
-import { TDEE } from "@/components/TDEE";
+import { TDEE } from "@/components/TDEE/TDEE";
 
 function index() {
     const [activePage, setActivepage] = useState("Ingredients");
