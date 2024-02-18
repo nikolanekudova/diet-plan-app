@@ -8,7 +8,8 @@ import { getTheme } from "../context/Theme";
 import { Ingredient } from "../types/types";
 import { Ingredients } from "@/components/Ingredients/Ingredients";
 import CssBaseline from '@mui/material/CssBaseline';
-import { PaletteMode } from "@mui/material";
+import { Divider, PaletteMode } from "@mui/material";
+import { TDEE } from "@/components/TDEE";
 
 function index() {
     const [activePage, setActivepage] = useState("Ingredients");
@@ -48,11 +49,11 @@ function index() {
                         <Sidebar />
                         <div className="page-wrapper">
                             <Header colorMode={mode} toggleColorMode={toggleColorMode}/>
+                            <Divider />
                             <div className="page-header">{activePage}</div>
                             <div className="page-content-wrapper">
-                                {activePage == "Ingredients" &&
-                                    <Ingredients />
-                                }
+                                {activePage == "Ingredients" && <Ingredients /> }
+                                {activePage == "TDEE" && <TDEE /> }
                             </div>
                         </div>
                     </IngredientsContext.Provider>

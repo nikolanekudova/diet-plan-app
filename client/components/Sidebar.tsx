@@ -11,6 +11,7 @@ import {
     HelpRounded,
 } from "@mui/icons-material";
 import SidebarItem from "./SidebarItem";
+import { Divider } from "@mui/material";
 
 export default function Sidebar() {
     return (
@@ -24,6 +25,7 @@ export default function Sidebar() {
                 }}
             >
                 <div className="sidebar-header">DIET PLAN APP</div>
+                <Divider />
                 <List sx={{ color: "primary", paddingLeft: "20px" }}>
                     <div className="sidebar-subtitle">MENU</div>
 
