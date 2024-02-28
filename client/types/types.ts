@@ -33,10 +33,23 @@ export interface IHeaderProps {
 }
 
 export interface ITdee {
-    height: number | null;
-    weight: number | null;
-    age: number | null;
+    height: number;
+    weight: number;
+    age: number;
     gender: "male" | "female" | string,
-    bodyFat: number | null,
+    bodyFat: number,
     lifestyle: "sedentary" | "lightlyActive" | "moderatelyActive" | "veryActive" | string,
+    lowIntensity: number,
+    mediumIntensity: number,
+    highIntensity: number,
+    strengthTraining: number,
+    intensityStrength: "low" | "medium" | "high" | string,
+}
+
+export interface ITDEEErrors {
+    height: boolean;
+    weight: boolean;
+    age: boolean;
+    gender: boolean,
+    lifestyle: boolean,
 }

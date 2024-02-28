@@ -1,5 +1,16 @@
 .tdee-wrapper {
     display: flex;
+    gap: 50px;
+}
+
+.tdee-left-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tdee-right-wrapper {
+    display: flex;
     flex-direction: column;
     gap: 30px;
 }
@@ -7,10 +18,24 @@
 .tdee-form-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 23px;
 }
 
 .tdee-form-row-wrapper {
     display: flex;
+    gap: 40px;
+}
+
+.activity-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: 20px;
+}
+
+.activity-row-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: left;
 }
