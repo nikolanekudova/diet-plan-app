@@ -53,3 +53,15 @@ export interface ITDEEErrors {
     gender: boolean,
     lifestyle: boolean,
 }
+
+export interface ITDEEFormProps {
+    tdee: ITdee;
+    setTdee: React.Dispatch<React.SetStateAction<ITdee>>;
+    TDEEerrors: ITDEEErrors;
+}
+
+export interface ITDEEDialogProps {
+    openDialog: boolean;
+    setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    resultTdee: number;
+}
