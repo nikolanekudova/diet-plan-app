@@ -65,3 +65,10 @@ export interface ITDEEDialogProps {
     setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
     resultTdee: number;
 }
+
+export interface IIngredientSnackbar {
+    snackbarMessage: string;
+    openSnackbar: boolean;
+    setOpenSnackbar: React.Dispatch<React.SetStateAction<boolean>>;
+    setSnackbarMessage: React.Dispatch<React.SetStateAction<string>>;
+}

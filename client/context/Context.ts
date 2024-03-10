@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { IActivepage, IIngredients } from "../types/types";
+import { IActivepage, IIngredientSnackbar, IIngredients } from "../types/types";
 
 export const ActivepageContext = createContext<IActivepage>({
     activePage: "Ingredients",
@@ -19,3 +19,10 @@ export const IngredientsContext = createContext<IIngredients>({
     setNewIngredient: () => {},
     getIngredients: Function,
 });
+
+export const ISnackbarContext = createContext<IIngredientSnackbar>({
+    openSnackbar: false,
+    setOpenSnackbar: () => {},
+    snackbarMessage: "test",
+    setSnackbarMessage: () => {}
+})

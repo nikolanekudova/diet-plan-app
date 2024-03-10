@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FormControl, Input, InputLabel, Button } from "@mui/material";
-import { IngredientsContext } from "@/context/Context";
+import { ISnackbarContext, IngredientsContext } from "@/context/Context";
 
 export function IngredientForm({ setForm }: any) {
     const { newIngredient, setNewIngredient, getIngredients } =
         useContext(IngredientsContext);
+    const { setOpenSnackbar, setSnackbarMessage } =
+        useContext(ISnackbarContext);
 
     function addNewIngredient() {
         const request = {
@@ -18,10 +20,18 @@ export function IngredientForm({ setForm }: any) {
 
         fetch("http://localhost:8080/ingredients/", request)
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            //.then((data) => console.log(data))
             .catch((error) => console.error(error))
             .then(() => getIngredients())
-            .then(() => setForm(false));
+            .then(() => setForm(false))
+            .then(() => openSnackbarAfterAdd());
+    }
+
+    function openSnackbarAfterAdd() {
+        const message = "Ingredient added! 🔥";
+
+        setSnackbarMessage(message);
+        setOpenSnackbar(true);
     }
 
     function cancelAddingIngredient() {
