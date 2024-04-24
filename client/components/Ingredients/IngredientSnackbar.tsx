@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import { ISnackbarContext } from "@/context/Context";
+import { SnackbarContent } from "@mui/material";
 
 export function IngredientSnackbar() {
     const { openSnackbar, setOpenSnackbar, snackbarMessage } = useContext(ISnackbarContext);
@@ -16,8 +17,12 @@ export function IngredientSnackbar() {
         <Snackbar
             open={openSnackbar}
             autoHideDuration={3000}
-            message={snackbarMessage}
             onClose={handleCloseSnackbar}
-        />
+        >
+            <SnackbarContent
+                sx={{bgcolor: "text.primary"}}
+                message={snackbarMessage} 
+            />
+        </Snackbar>
     );
 }

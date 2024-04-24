@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-.btn-add-ingredient {
+.btn-add-ingredient, .btn-delete-ingredient {
     width: 50px;
 }
 
@@ -21,10 +21,14 @@
     width: 70vw;
 }
 
-.btns-ingredient-form {
+.btns-ingredient-form, .btns-delete-ingredient-form {
     display: flex;
     gap: 10px;
     justify-content: center;
+}
+
+.btns-delete-ingredient-form {
+    padding: 0px 20px 20px 20px;
 }
 
 .ingredient-row-wrapper {

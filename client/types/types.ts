@@ -9,6 +9,14 @@ export interface Ingredient {
     _id?: string;
 }
 
+export interface INewIngredientErrors {
+    calories: boolean;
+    carbohydrates: boolean;
+    fats: boolean;
+    name: boolean;
+    proteins: boolean;
+}
+
 export interface IActivepage {
     activePage: string,
     setActivepage: Dispatch<SetStateAction<any>>;

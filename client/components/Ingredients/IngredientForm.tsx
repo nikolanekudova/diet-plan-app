@@ -1,12 +1,64 @@
 import React, { useContext, useState } from "react";
-import { FormControl, Input, InputLabel, Button } from "@mui/material";
+import {
+    FormControl,
+    Input,
+    Button,
+    FormHelperText,
+    InputAdornment,
+} from "@mui/material";
 import { ISnackbarContext, IngredientsContext } from "@/context/Context";
+import { INewIngredientErrors, Ingredient } from "@/types/types";
 
 export function IngredientForm({ setForm }: any) {
     const { newIngredient, setNewIngredient, getIngredients } =
         useContext(IngredientsContext);
     const { setOpenSnackbar, setSnackbarMessage } =
         useContext(ISnackbarContext);
+    const [newIngredientErrors, setNewIngredientErrors] =
+        useState<INewIngredientErrors>({
+            calories: false,
+            carbohydrates: false,
+            fats: false,
+            name: false,
+            proteins: false,
+        });
+
+    function validateInputs() {
+        const updatedIngredientserrors = {
+            calories: false,
+            carbohydrates: false,
+            fats: false,
+            name: false,
+            proteins: false,
+        };
+
+        for (const [key, value] of Object.entries(newIngredientErrors)) {
+            const inputValue = newIngredient[key as keyof Ingredient];
+
+            if (inputValue == null || inputValue === "") {
+                updatedIngredientserrors[key as keyof INewIngredientErrors] =
+                    true;
+            } else {
+                updatedIngredientserrors[key as keyof INewIngredientErrors] =
+                    false;
+            }
+
+            setNewIngredientErrors(updatedIngredientserrors);
+        }
+
+        return updatedIngredientserrors;
+    }
+
+    function handleAddNewIngredient() {
+        let errors = validateInputs();
+        let allFalse = Object.values(errors).every((value) => value === false);
+
+        if (allFalse) {
+            addNewIngredient();
+        }
+
+        return;
+    }
 
     function addNewIngredient() {
         const request = {
@@ -20,11 +72,21 @@ export function IngredientForm({ setForm }: any) {
 
         fetch("http://localhost:8080/ingredients/", request)
             .then((response) => response.json())
-            //.then((data) => console.log(data))
             .catch((error) => console.error(error))
             .then(() => getIngredients())
             .then(() => setForm(false))
-            .then(() => openSnackbarAfterAdd());
+            .then(() => openSnackbarAfterAdd())
+            .then(() => nullNewIngredient());
+    }
+
+    function nullNewIngredient() {
+        setNewIngredient({
+            name: "",
+            calories: null,
+            fats: null,
+            carbohydrates: null,
+            proteins: null,
+        });
     }
 
     function openSnackbarAfterAdd() {
@@ -43,7 +105,9 @@ export function IngredientForm({ setForm }: any) {
             <div className="ingredient-inputs-wrapper">
                 <div className="ingredient-row-wrapper">
                     <FormControl>
-                        <InputLabel htmlFor="ingredient">name</InputLabel>
+                        <FormHelperText id="ingredient">
+                            {newIngredientErrors.name ? "Fill in name" : "Name"}
+                        </FormHelperText>
                         <Input
                             id="ingredient"
                             onChange={(e) =>
@@ -53,13 +117,23 @@ export function IngredientForm({ setForm }: any) {
                                 })
                             }
                             sx={{ width: "320px" }}
+                            required
+                            error={newIngredientErrors.name}
                         />
                     </FormControl>
                     <FormControl>
-                        <InputLabel htmlFor="calories">calories</InputLabel>
+                        <FormHelperText id="calories">
+                            {newIngredientErrors.calories
+                                ? "Fill in calories"
+                                : "Calories"}
+                        </FormHelperText>
                         <Input
                             id="calories"
-                            inputProps={{ type: "number" }}
+                            inputProps={{
+                                type: "number",
+                                min: "0",
+                                step: "1",
+                            }}
                             onChange={(e) =>
                                 setNewIngredient({
                                     ...newIngredient,
@@ -67,15 +141,27 @@ export function IngredientForm({ setForm }: any) {
                                 })
                             }
                             sx={{ width: "150px" }}
+                            error={newIngredientErrors.calories}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    kcal
+                                </InputAdornment>
+                            }
                         />
                     </FormControl>
                 </div>
                 <div className="ingredient-row-wrapper">
                     <FormControl>
-                        <InputLabel htmlFor="fats">fats</InputLabel>
+                        <FormHelperText id="fats">
+                            {newIngredientErrors.fats ? "Fill in fats" : "Fats"}
+                        </FormHelperText>
                         <Input
                             id="fats"
-                            inputProps={{ type: "number" }}
+                            inputProps={{
+                                type: "number",
+                                min: "0",
+                                step: "1",
+                            }}
                             onChange={(e) =>
                                 setNewIngredient({
                                     ...newIngredient,
@@ -83,15 +169,27 @@ export function IngredientForm({ setForm }: any) {
                                 })
                             }
                             sx={{ width: "150px" }}
+                            error={newIngredientErrors.fats}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    g
+                                </InputAdornment>
+                            }
                         />
                     </FormControl>
                     <FormControl>
-                        <InputLabel htmlFor="carbohydrates">
-                            carbohydrates
-                        </InputLabel>
+                        <FormHelperText id="carbohydrates">
+                            {newIngredientErrors.carbohydrates
+                                ? "Fill in carbohydrates"
+                                : "Carbohydrates"}
+                        </FormHelperText>
                         <Input
                             id="carbohydrates"
-                            inputProps={{ type: "number" }}
+                            inputProps={{
+                                type: "number",
+                                min: "0",
+                                step: "1",
+                            }}
                             onChange={(e) =>
                                 setNewIngredient({
                                     ...newIngredient,
@@ -99,13 +197,27 @@ export function IngredientForm({ setForm }: any) {
                                 })
                             }
                             sx={{ width: "150px" }}
+                            error={newIngredientErrors.carbohydrates}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    g
+                                </InputAdornment>
+                            }
                         />
                     </FormControl>
                     <FormControl>
-                        <InputLabel htmlFor="proteins">proteins</InputLabel>
+                        <FormHelperText id="proteins">
+                            {newIngredientErrors.proteins
+                                ? "Fill in proteins"
+                                : "Proteins"}
+                        </FormHelperText>
                         <Input
                             id="proteins"
-                            inputProps={{ type: "number" }}
+                            inputProps={{
+                                type: "number",
+                                min: "0",
+                                step: "1",
+                            }}
                             onChange={(e) =>
                                 setNewIngredient({
                                     ...newIngredient,
@@ -113,6 +225,12 @@ export function IngredientForm({ setForm }: any) {
                                 })
                             }
                             sx={{ width: "150px" }}
+                            error={newIngredientErrors.proteins}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    g
+                                </InputAdornment>
+                            }
                         />
                     </FormControl>
                 </div>
@@ -120,7 +238,7 @@ export function IngredientForm({ setForm }: any) {
             <div className="btns-ingredient-form">
                 <Button
                     variant="contained"
-                    onClick={addNewIngredient}
+                    onClick={handleAddNewIngredient}
                     className="btn-add-ingredient"
                 >
                     Add
